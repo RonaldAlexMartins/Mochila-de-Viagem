@@ -24,9 +24,9 @@ form.addEventListener("submit", (evento) => {
 
       atualizaElemento(itemAtual)
 
-      itens[existe.id] = itemAtual
+      itens[itens.findIndex(elemento =>elemento.id === existe.id)] = itemAtual
   } else {
-    itemAtual.id = itens.length
+    itemAtual.id = itens[itens.length-1] ? (itens([itens.length-1]).id + 1 : 0;
 
     criaElemento(itemAtual)
 
@@ -71,4 +71,8 @@ function botaoDeleta() {
 
 function deletaElemento(tag) {
   tag.remove()
+
+  itens.splice(itens.findIndex(elementos => elemento.id === id), 1)
+
+  localStorage.setItem("itens", JSON.stringify(itens))
 }
